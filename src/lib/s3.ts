@@ -9,7 +9,7 @@ export async function uploadToS3(file: File) {
 
     const s3 = new AWS.S3({
       params: {
-        Bucket: process.env.NEXT_PUBLIC_BUCKET_NAME,
+        Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
       },
       region: "eu-west-2",
     });
@@ -43,6 +43,6 @@ export async function uploadToS3(file: File) {
 }
 
 export function getS3Url(file_key: string) {
-  const url = ` https://${process.env.NEXT_PUBLIC_BUCKET_NAME}.s3.eu-west-2.amazonaws.com/${file_key}`;
+  const url = `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.eu-west-2.amazonaws.com/${file_key}`;
   return url;
 }
